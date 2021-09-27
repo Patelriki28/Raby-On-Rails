@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="columns is-centered">
 			<div class="column is-4">
-				<h2 class="title is-2">Log in</h2>
+				<h2 class="title is-2">Sign in</h2>
 				<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 				  <div class="field">
@@ -22,8 +22,10 @@
 				    <%= f.input :remember_me, wrapper: false, as: :boolean if devise_mapping.rememberable? %>
 				  	</div>
 					</div>
-
-				  <%= f.button :submit, "Log in", class:"button is-outlined is-medium" %>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Sign in</button>
+             </div>
+				  <%#= f.button :submit, "Log in", class:"button is-outlined is-medium" %>
 				<% end %>
 				<br/>
 				<%= render "devise/shared/links" %>
