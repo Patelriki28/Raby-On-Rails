@@ -92,6 +92,13 @@ GEM
       ssrf_filter (~> 1.0)
     childprocess (3.0.0)
     coderay (1.1.3)
+    coffee-rails (4.2.2)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     devise (4.8.0)
@@ -105,6 +112,7 @@ GEM
       http_parser.rb (~> 0.6.0)
     erubi (1.10.0)
     eventmachine (1.2.7)
+    execjs (2.8.1)
     ffi (1.15.4)
     formatador (0.3.0)
     globalid (0.5.2)
@@ -243,6 +251,8 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    uglifier (3.2.0)
+      execjs (>= 0.3.0, < 3)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.1.0)
@@ -276,6 +286,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   carrierwave
+  coffee-rails
   devise
   gravatar_image_tag
   guard
@@ -293,6 +304,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
+  uglifier
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
