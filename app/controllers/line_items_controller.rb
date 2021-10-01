@@ -2,7 +2,9 @@ class LineItemsController < ApplicationController
   include CurrentCart
 
   before_action :set_line_item, only: %i[ show edit update destroy ]
-  before_action :set_cart, only: [:create]
+  #before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :decrease, :increase]
+
 
   # GET /line_items or /line_items.json
   def index
@@ -20,6 +22,37 @@ class LineItemsController < ApplicationController
 
   # GET /line_items/1/edit
   def edit
+  end
+  def decrease
+    product = Product.find(params[:product_id])
+    @line_item = @cart.remove_product(product)
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to cart_path, notice: 'Line item was successfully updated.' }
+        format.js
+        format.json { render :show, status: :ok, location: @line_item }
+      else
+        format.html { render :edit }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def increase
+    product = Product.find(params[:product_id])
+    @line_item = @cart.add_product(product)
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to cart_path, notice: 'Line item was successfully updated.' }
+        format.js
+        format.json { render :show, status: :ok, location: @line_item }
+      else
+        format.html { render :edit }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /line_items or /line_items.json

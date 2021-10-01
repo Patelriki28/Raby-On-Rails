@@ -3,6 +3,8 @@ class CreateProducts < ActiveRecord::Migration[6.1]
     create_table :products do |t|
       t.string :brand
       t.string :model
+      t.string :stripe_plan_name
+      t.string :paypal_plan_name
       t.text :description
       t.string :condition
       t.string :finish
@@ -11,5 +13,7 @@ class CreateProducts < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_money :products, :price, currency: { present: true }
+  end
   end
 end
